@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Qiita予約投稿</title>
+    <style>
+      body {
+        width: 240px;
+      }
+      .settings {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="publish">
+      <h1>Qiita予約投稿</h1>
+      <label for="itemUrl">URL:</label>
+      <p>限定共有記事のURLを入力してください</p>
+      <input
+        type="text"
+        id="itemUrl"
+        placeholder="https://qiita.com/Qiita/items/c686397e4a0f4f11683d"
+      /><br /><br />
+
+      <label for="scheduledDate">予約日時:</label>
+      <p>予約日時を入力してください</p>
+      <input id="scheduledDate" type="datetime-local" /><br /><br />
+
+      <button id="publishButton">予約</button>
+      <button id="settingsButton">設定</button>
+    </div>
+
+    <div class="settings">
+      <h1>設定</h1>
+      <label for="accessToken">アクセストークン:</label>
+      <p>アクセストークンを入力してください</p>
+      <input
+        type="text"
+        id="accessToken"
+        placeholder="abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234"
+      /><br /><br />
+
+      <label for="organization">組織:</label>
+      <p>紐付ける場合はURIを入力してください</p>
+      <input type="text" id="organization" placeholder="Qiita" /><br /><br />
+
+      <button id="saveButton">保存</button>
+      <button id="backButton">戻る</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Qiita 予約投稿",
+  "version": "2.0",
+  "description": "Qiitaの予約投稿機能です。",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": ["https://qiita.com/*"]
+}
