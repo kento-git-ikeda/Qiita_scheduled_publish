@@ -2,7 +2,7 @@ setInterval(() => {
   chrome.storage.local.get({ publishSchedules: [] }, async (result) => {
     const schedules = result.publishSchedules;
 
-    if (!Array.isArray(schedules)) {
+    if (!Array.isArray(schedules) || schedules.length == 0) {
       return; // 存在しない場合は処理を中止
     }
 
@@ -19,12 +19,12 @@ setInterval(() => {
             schedule.articleData
           );
           console.log(`予約投稿された記事を公開しました: ${schedule.itemId}`);
-          // chrome.storage.local.remove(schedule);
         } catch (error) {
           console.error(
             `予約投稿された記事の更新に失敗しました: ${schedule.itemId} (${error.message})`
           );
         }
+        updateLocalStorage(schedule.itemId, schedule.scheduledDate);
       }
     }
   });
@@ -56,4 +56,19 @@ async function updateArticleToPublic(
   }
 
   return await response.json();
+}
+
+function updateLocalStorage(id, date) {
+  chrome.storage.local.get({ publishSchedules: [] }, (result) => {
+    const updatedStorage = result.publishSchedules.filter(
+      (schedule) => schedule.itemId != id
+    );
+
+    chrome.storage.local.set({ publishSchedules: updatedStorage }, () => {
+      console.log(`スケジュールを削除しました: ${id} ${date}`);
+    });
+    chrome.storage.local.get({ publishSchedules: [] }, (result) => {
+      console.log("今後のスケジュール:", result.publishSchedules);
+    });
+  });
 }
