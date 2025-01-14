@@ -6,7 +6,7 @@ https://chromewebstore.google.com/detail/qiita-%E4%BA%88%E7%B4%84%E6%8A%95%E7%A8
 ver2.1
 
 ## 仕様説明
-Qiita記事執筆中
+https://qiita.com/iketo/items/9a9227aa9499c35a70e4
 
 ## バージョン命名規約
 セマンティックバージョニングに準ずる<br>
